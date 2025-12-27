@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/css/extended/premium.css">
+    {{ partial "head.html" . }}
+</head>
+<body style="background-color: #000000; color: #ffffff;">
+    {{ partial "header.html" . }}
+    
+    <main class="blog-list-container">
+        <div class="container">
+            <header class="page-header">
+                <h1 class="page-title">{{ .Title }}</h1>
+                <p class="page-subtitle">Tất cả bài viết về {{ .Title }}</p>
+            </header>
+            
+            <div class="blog-grid">
+                {{ range .Pages }}
+                <article class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="blog-tags">
+                            {{ range .Params.tags }}
+                            <span class="tag tag-{{ . | lower }}">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        <h3 class="blog-title">
+                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        </h3>
+                        <p class="blog-excerpt">{{ .Summary | truncate 120 }}</p>
+                        <div class="blog-meta">
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+                            <span class="read-more">Đọc tiếp →</span>
+                        </div>
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+        </div>
+    </main>
+    
+    {{ partial "footer.html" . }}
+    <script src="/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,71 @@
+baseURL = 'https://yourusername.github.io/'
+languageCode = 'vi'
+title = 'Thiên Dev - Từ Sinh Viên Đến Developer'
+# Không sử dụng theme, dùng custom layouts
+
+# Cấu hình menu
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
+  [[menu.main]]
+    identifier = "certificates"
+    name = "Certificates"
+    url = "/certificates/"
+    weight = 4
+
+# Cấu hình taxonomy
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+# Cấu hình params
+[params]
+  author = "Thiên Dev"
+  description = "Blog cá nhân chia sẻ kiến thức về Java & JavaScript cho sinh viên CNTT"
+  keywords = ["Java", "JavaScript", "Programming", "IT Student", "Software Engineering"]
+  
+  # Social links
+  github = "https://github.com/ThunThin"
+  linkedin = "https://linkedin.com/in/yourusername"
+  facebook = "https://www.facebook.com/thieen.12?locale=vi_VN"
+  instagram = "https://www.instagram.com/_thieen.12/"
+  
+  # Hero section
+  heroTitle = "Building Software With Engineering Mindset"
+  heroSubtitle = "Java • JavaScript • Software Engineering • Systems Thinking"
+  heroCTA1 = "Explore Blog"
+  heroCTA2 = "Giới Thiệu Chung"
+  
+  # About section
+  aboutTitle = "Từ Sinh Viên Đến Developer"
+  aboutSubtitle = "Học lập trình đúng cách, từ cơ bản đến tư duy kỹ sư phần mềm"
+
+# Cấu hình markdown
+[markup]
+  [markup.highlight]
+    style = "github-dark"
+    lineNos = true
+    codeFences = true
+
+# Cấu hình output
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]
+
+# Cấu hình pagination
+[pagination]
+  pageSize = 9
+

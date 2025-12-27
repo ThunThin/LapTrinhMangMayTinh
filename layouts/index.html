@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <title>{{ .Site.Title }}</title>
+    {{ partial "head.html" . }}
+    <link rel="stylesheet" href="/css/extended/premium.css">
+</head>
+<body style="background-color: #000000; color: #ffffff;">
+    {{ partial "header.html" . }}
+    
+    <!-- Hero Section - Compact -->
+    <section class="hero-section hero-section-compact">
+        <div class="container">
+            <div class="hero-content hero-compact-content">
+                <h1 class="hero-title">
+                    {{ .Site.Params.heroTitle }}
+                </h1>
+                <p class="hero-subtitle">{{ .Site.Params.heroSubtitle }}</p>
+                <div class="hero-cta">
+                    <a href="#blog" class="btn btn-primary">Explore Blog</a>
+                    <a href="#about" class="btn btn-secondary">Giới Thiệu Chung</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Section -->
+    <section id="blog" class="blog-section blog-section-home">
+        <div class="container">
+            <!-- Header Section -->
+            <div class="blog-header">
+                <div class="blog-header-left">
+                    <h1 class="blog-main-title">Bài viết mới nhất</h1>
+                    <p class="blog-main-subtitle">Cập nhật kiến thức mới mỗi tuần</p>
+                </div>
+                <div class="blog-header-right">
+                    <span class="blog-count">{{ len (where .Site.RegularPages "Section" "posts") }} bài viết</span>
+                    <a href="#blog" class="btn btn-primary blog-view-all-btn">Xem tất cả bài viết →</a>
+                </div>
+            </div>
+
+            <!-- Search and Filter Section -->
+            <div class="blog-search-filter">
+                <div class="search-filter-row">
+                    <div class="search-box-wrapper">
+                        <input type="text" id="blog-search" class="blog-search-input" placeholder="Tìm kiếm bài viết, hashtag (#Java, #JavaScript)..." autocomplete="off" />
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <!-- Suggestions Dropdown -->
+                        <div class="search-suggestions" id="search-suggestions"></div>
+                    </div>
+                    <div class="filter-dropdown-wrapper">
+                        <div class="filter-dropdown" id="filter-dropdown">
+                            <button class="filter-dropdown-toggle" id="filter-dropdown-toggle">
+                                <span class="filter-dropdown-text">
+                                    <span class="filter-selected-value" id="filter-selected-value">Tất cả</span>
+                                </span>
+                                <svg class="filter-dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="filter-dropdown-menu" id="filter-dropdown-menu">
+                                <div class="filter-dropdown-item active" data-filter="all">
+                                    <span>Tất cả</span>
+                                    <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="filter-dropdown-item" data-filter="java" data-tag-name="Java">
+                                    <span>Java</span>
+                                    <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="filter-dropdown-item" data-filter="javascript" data-tag-name="JavaScript">
+                                    <span>JavaScript</span>
+                                    <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Grid Container with Horizontal Scroll -->
+            <div class="blog-grid-container">
+                <div class="blog-grids-scroll-wrapper" id="blog-grids-scroll-wrapper">
+                    <div class="blog-grids-container" id="blog-grids-container">
+                        <!-- Grids will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Scroll Navigation -->
+                <div class="blog-scroll-nav" id="blog-scroll-nav" style="display: none;">
+                    <button class="blog-scroll-btn blog-scroll-prev" id="blog-scroll-prev" aria-label="Previous">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="blog-scroll-indicators" id="blog-scroll-indicators"></div>
+                    <button class="blog-scroll-btn blog-scroll-next" id="blog-scroll-next" aria-label="Next">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Hidden container for blog cards data -->
+            <div id="blog-cards-data" style="display: none;">
+                {{ range (where .Site.RegularPages "Section" "posts") }}
+                <article class="blog-card" 
+                    data-title="{{ .Title | lower }}"
+                    data-content="{{ .Summary | lower }}"
+                    data-tags="{{ range .Params.tags }}{{ . | lower }} {{ end }}"
+                    data-category="{{ if .Params.categories }}{{ index .Params.categories 0 | lower }}{{ end }}">
+                    <div class="blog-card-content">
+                        <!-- Date và Reading Time ở trên -->
+                        <div class="blog-meta-top">
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+                            <span class="separator">•</span>
+                            <span class="reading-time">{{ .ReadingTime }} phút đọc</span>
+                        </div>
+                        
+                        <!-- Title -->
+                        <h3 class="blog-title">
+                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        </h3>
+                        
+                        <!-- Excerpt -->
+                        <p class="blog-excerpt">{{ .Summary | truncate 120 }}</p>
+                        
+                        <!-- Tags ở dưới -->
+                        <div class="blog-tags">
+                            {{ range .Params.tags }}
+                            <span class="tag tag-{{ . | lower }}">#{{ . }}</span>
+                            {{ end }}
+                        </div>
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <p>Không tìm thấy bài viết nào phù hợp với từ khóa của bạn.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Giới Thiệu Chung</h2>
+                    
+                    <div class="about-text-content">
+                    <div class="about-intro">
+                        <p class="about-paragraph">Mình là Thiên, sinh viên năm cuối ngành Công nghệ Thông tin, chuyên ngành <span class="highlight">Cyber Security</span> và <span class="highlight">Software Development</span>.</p>
+                        
+                        <p class="about-paragraph">Mình quan tâm đến cách xây dựng phần mềm an toàn, có cấu trúc rõ ràng và dễ mở rộng, thay vì chỉ tập trung vào việc "làm cho chạy được".</p>
+                        
+                        <p class="about-paragraph">Trong quá trình học tập, mình nhận ra rằng viết được code chưa đủ — điều quan trọng hơn là hiểu vì sao hệ thống được thiết kế như vậy, cách các thành phần tương tác với nhau, và làm sao để phần mềm có thể duy trì, mở rộng và bảo mật trong môi trường thực tế.</p>
+                    </div>
+                    
+                    <div class="about-subsection">
+                        <h3 class="subsection-title">Triết lý học tập</h3>
+                        <ul class="philosophy-list">
+                            <li>
+                                <strong class="philosophy-keyword">Learn by doing</strong> – Học thông qua thực hành và dự án thực tế, không chỉ đọc lý thuyết
+                            </li>
+                            <li>
+                                <strong class="philosophy-keyword">Understand fundamentals</strong> – Nắm vững nền tảng (OOP, cấu trúc dữ liệu, networking, security concepts) trước khi tiếp cận framework
+                            </li>
+                            <li>
+                                <strong class="philosophy-keyword">Write clean code</strong> – Code phải dễ đọc, dễ bảo trì và dễ mở rộng cho người khác
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-subsection">
+                        <h3 class="subsection-title">Định hướng nghề nghiệp</h3>
+                        <p class="about-paragraph">Mục tiêu của mình là trở thành một <span class="highlight">Software Engineer</span> chuyên nghiệp, không chỉ biết viết code mà còn:</p>
+                        <ul class="career-list">
+                            <li>Hiểu kiến trúc hệ thống</li>
+                            <li>Áp dụng best practices</li>
+                            <li>Có tư duy giải quyết vấn đề rõ ràng và có hệ thống</li>
+                            <li>Quan tâm đến yếu tố bảo mật ngay từ khâu thiết kế</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-subsection">
+                        <h3 class="subsection-title">Về blog này</h3>
+                        <p class="about-paragraph">Blog được tạo ra như một nhật ký học tập và chia sẻ kiến thức, nơi mình ghi lại:</p>
+                        <ul class="blog-list">
+                            <li>Những gì đã học được</li>
+                            <li>Những sai lầm từng gặp</li>
+                            <li>Cách mình cải thiện tư duy lập trình qua từng giai đoạn</li>
+                        </ul>
+                        <p class="about-paragraph">Mục tiêu của blog là giúp các bạn sinh viên tránh được những lỗi phổ biến, tiếp cận lập trình theo hướng bài bản, thực tế và hiệu quả hơn, từ đó rút ngắn con đường từ sinh viên đến developer thực thụ.</p>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="visual-block">
+                        <h3 class="code-block-title">Hành Trình Từ Sinh Viên Đến Developer</h3>
+                        <div class="code-snippet">
+                            <pre><code><span class="comment">// Từ sinh viên đến developer</span>
+<span class="keyword">class</span> <span class="class-name">Developer</span> {
+    <span class="keyword">constructor</span>(ten, chuyenNganh) {
+        <span class="keyword">this</span>.<span class="property">ten</span> = ten;
+        <span class="keyword">this</span>.<span class="property">chuyenNganh</span> = chuyenNganh;
+    }
+    
+    <span class="function">hocTap</span>() {
+        <span class="return">return</span> <span class="string">"Thực hành hàng ngày"</span>;
+    }
+    
+    <span class="function">hieuBietNenTang</span>() {
+        <span class="return">return</span> [<span class="string">"OOP"</span>, <span class="string">"Cấu trúc dữ liệu"</span>, <span class="string">"Networking"</span>, <span class="string">"Security"</span>];
+    }
+    
+    <span class="function">vietCodeSach</span>() {
+        <span class="return">return</span> { deDoc: <span class="boolean">true</span>, deBaoTri: <span class="boolean">true</span>, deMoRong: <span class="boolean">true</span> };
+    }
+    
+    <span class="function">troThanhChuyenNghiep</span>() {
+        <span class="return">return</span> { hieuKienTruc: <span class="boolean">true</span>, apDungBestPractices: <span class="boolean">true</span>, tuDuyGiaiQuyetVanDe: <span class="boolean">true</span> };
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Chứng chỉ & Thành tựu
+                </h2>
+                <p class="section-subtitle">Những cột mốc quan trọng đánh dấu sự nỗ lực và phát triển của mình trên con đường chinh phục công nghệ. Click vào từng chứng chỉ để xem chi tiết.</p>
+            </div>
+            
+            <div class="certificates-grid">
+                <!-- Certificate 1: Networking Basics -->
+                <div class="certificate-card certificate-card-flip" id="networking-cert-card">
+                    <div class="certificate-card-inner">
+                        <div class="certificate-card-front">
+                            <div class="certificate-header">
+                                <div class="certificate-icon certificate-icon-network">🌐</div>
+                                <div class="certificate-verified">VERIFIED</div>
+                            </div>
+                            <h3 class="certificate-title">Networking Basics</h3>
+                            <p class="certificate-issuer">Cisco Networking Academy • 21/11/2025</p>
+                            <div class="certificate-skills">
+                                <h4 class="skills-title">KỸ NĂNG ĐẠT ĐƯỢC</h4>
+                                <ul class="skills-list">
+                                    <li><span class="checkmark">✓</span> Network Protocols</li>
+                                    <li><span class="checkmark">✓</span> IPv4 & IPv6 Addressing</li>
+                                    <li><span class="checkmark">✓</span> Routers & Connections</li>
+                                    <li><span class="checkmark">✓</span> Network Communication</li>
+                                    <li><span class="checkmark">✓</span> Connectivity Troubleshooting</li>
+                                </ul>
+                            </div>
+                            <div class="flip-hint">Click để xem chứng chỉ</div>
+                        </div>
+                        <div class="certificate-card-back">
+                            <img src="/img/cert_networking_basics.png" alt="Networking Basics Certificate" class="certificate-image" data-cert-image="/img/cert_networking_basics.png">
+                            <div class="flip-hint-back">Click để quay lại</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 2: JavaScript Essentials 1 -->
+                <div class="certificate-card certificate-card-flip" id="js-essentials-1-cert-card">
+                    <div class="certificate-card-inner">
+                        <div class="certificate-card-front">
+                            <div class="certificate-header">
+                                <div class="certificate-icon certificate-icon-js">⚡</div>
+                                <div class="certificate-verified">VERIFIED</div>
+                            </div>
+                            <h3 class="certificate-title">JavaScript Essentials 1</h3>
+                            <p class="certificate-issuer">Cisco Networking Academy & JS Institute • 01/12/2025</p>
+                            <div class="certificate-skills">
+                                <h4 class="skills-title">KỸ NĂNG ĐẠT ĐƯỢC</h4>
+                                <ul class="skills-list">
+                                    <li><span class="checkmark">✓</span> JS Syntax & Variables</li>
+                                    <li><span class="checkmark">✓</span> Data Types</li>
+                                    <li><span class="checkmark">✓</span> Flow Control & Loops</li>
+                                    <li><span class="checkmark">✓</span> Functions</li>
+                                    <li><span class="checkmark">✓</span> Basic Algorithms</li>
+                                </ul>
+                            </div>
+                            <div class="flip-hint">Click để xem chứng chỉ</div>
+                        </div>
+                        <div class="certificate-card-back">
+                            <img src="/img/cert_js_essentials_1.png" alt="JavaScript Essentials 1 Certificate" class="certificate-image" data-cert-image="/img/cert_js_essentials_1.png">
+                            <div class="flip-hint-back">Click để quay lại</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 3: JavaScript Essentials 2 -->
+                <div class="certificate-card certificate-card-flip" id="js-essentials-2-cert-card">
+                    <div class="certificate-card-inner">
+                        <div class="certificate-card-front">
+                            <div class="certificate-header">
+                                <div class="certificate-icon certificate-icon-js">⚡</div>
+                                <div class="certificate-verified">VERIFIED</div>
+                            </div>
+                            <h3 class="certificate-title">JavaScript Essentials 2</h3>
+                            <p class="certificate-issuer">Cisco Networking Academy & JS Institute • 08/12/2025</p>
+                            <div class="certificate-skills">
+                                <h4 class="skills-title">KỸ NĂNG ĐẠT ĐƯỢC</h4>
+                                <ul class="skills-list">
+                                    <li><span class="checkmark">✓</span> Objects & Prototypes</li>
+                                    <li><span class="checkmark">✓</span> Inheritance</li>
+                                    <li><span class="checkmark">✓</span> Advanced Array Methods</li>
+                                    <li><span class="checkmark">✓</span> OOP Principles</li>
+                                    <li><span class="checkmark">✓</span> RegExp & Math Object</li>
+                                </ul>
+                            </div>
+                            <div class="flip-hint">Click để xem chứng chỉ</div>
+                        </div>
+                        <div class="certificate-card-back">
+                            <img src="/img/cert_js_essentials_2.png" alt="JavaScript Essentials 2 Certificate" class="certificate-image" data-cert-image="/img/cert_js_essentials_2.png">
+                            <div class="flip-hint-back">Click để quay lại</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ partial "footer.html" . }}
+    
+    <!-- Certificate Image Modal -->
+    <div id="certificate-modal" class="certificate-modal">
+        <div class="certificate-modal-overlay"></div>
+        <div class="certificate-modal-content">
+            <button class="certificate-modal-close" aria-label="Đóng">&times;</button>
+            <img id="certificate-modal-image" src="" alt="Certificate" class="certificate-modal-img">
+        </div>
+    </div>
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>
+
