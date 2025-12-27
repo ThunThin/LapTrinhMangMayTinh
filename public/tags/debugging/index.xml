@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debugging on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/debugging/</link>
+    <description>Recent content in Debugging on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/debugging/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Error Handling: Từ Try-Catch Đến Best Practices</title>
+      <link>http://localhost:1313/posts/20-js-error-handling/</link>
+      <pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/20-js-error-handling/</guid>
+      <description>Error handling là một kỹ năng quan trọng nhưng thường bị bỏ qua. Bài viết này chia sẻ cách handle errors đúng cách trong JavaScript.</description>
+    </item>
+  </channel>
+</rss>

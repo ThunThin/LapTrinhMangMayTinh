@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/java/</link>
+    <description>Recent content in Java on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Design Patterns: Giải Pháp Cho Các Vấn Đề Thường Gặp</title>
+      <link>http://localhost:1313/posts/15-java-design-patterns/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/15-java-design-patterns/</guid>
+      <description>Design patterns là các giải pháp đã được chứng minh cho các vấn đề thiết kế phần mềm thường gặp. Bài viết này giới thiệu các design patterns quan trọng nhất trong Java.</description>
+    </item>
+    <item>
+      <title>Java Annotations: Metadata Và Reflection</title>
+      <link>http://localhost:1313/posts/14-java-annotations/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/14-java-annotations/</guid>
+      <description>Annotations là cách Java thêm metadata vào code. Bài viết này giải thích cách annotations hoạt động và cách tạo custom annotations.</description>
+    </item>
+    <item>
+      <title>Java Multithreading: Hiểu Concurrency Và Parallelism</title>
+      <link>http://localhost:1313/posts/13-java-multithreading/</link>
+      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/13-java-multithreading/</guid>
+      <description>Multithreading là một trong những chủ đề khó nhất của Java. Bài viết này chia sẻ cách mình đã học từ basic threads đến ExecutorService và concurrent collections.</description>
+    </item>
+    <item>
+      <title>Java Generics: Type Safety Và Code Reusability</title>
+      <link>http://localhost:1313/posts/12-java-generics/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/12-java-generics/</guid>
+      <description>Generics là một trong những tính năng quan trọng nhất của Java nhưng lại khó hiểu. Bài viết này giải thích chi tiết cách Generics hoạt động và cách sử dụng đúng cách.</description>
+    </item>
+    <item>
+      <title>Java Streams API: Xử Lý Dữ Liệu Theo Cách Functional</title>
+      <link>http://localhost:1313/posts/11-java-streams-api/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/11-java-streams-api/</guid>
+      <description>Streams API là một trong những tính năng mạnh mẽ nhất của Java 8+. Bài viết này chia sẻ cách mình đã học Streams từ cách tiếp cận imperative đến functional programming style.</description>
+    </item>
+    <item>
+      <title>Clean Code trong Java: Từ Code &#34;Chạy Được&#34; Đến Code &#34;Đẹp&#34;</title>
+      <link>http://localhost:1313/posts/05-java-clean-code/</link>
+      <pubDate>Thu, 19 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/05-java-clean-code/</guid>
+      <description>Clean code không chỉ là code đẹp, mà là code dễ đọc, dễ hiểu, dễ maintain. Bài viết này chia sẻ những nguyên tắc clean code mà mình đã học và áp dụng.</description>
+    </item>
+    <item>
+      <title>Từ Java Core Đến Spring: Thay Đổi Tư Duy Lập Trình</title>
+      <link>http://localhost:1313/posts/04-java-spring-mindset/</link>
+      <pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/04-java-spring-mindset/</guid>
+      <description>Học Spring không chỉ là học một framework, mà là học cách tư duy về kiến trúc phần mềm. Bài viết này chia sẻ hành trình từ Java thuần đến Spring Boot của mình.</description>
+    </item>
+    <item>
+      <title>Java Exceptions: Từ Try-Catch Đến Best Practices</title>
+      <link>http://localhost:1313/posts/03-java-exceptions/</link>
+      <pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/03-java-exceptions/</guid>
+      <description>Exception handling là một trong những phần khó nhất khi học Java. Bài viết này chia sẻ cách mình đã học từ việc bỏ qua exceptions đến việc xử lý chúng một cách chuyên nghiệp.</description>
+    </item>
+    <item>
+      <title>Java Collections: Từ Confusion Đến Mastery</title>
+      <link>http://localhost:1313/posts/02-java-collections/</link>
+      <pubDate>Mon, 16 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/02-java-collections/</guid>
+      <description>ArrayList hay LinkedList? HashMap hay TreeMap? Bài viết này chia sẻ cách mình đã học Collections Framework một cách có hệ thống và áp dụng vào thực tế.</description>
+    </item>
+    <item>
+      <title>Tại Sao Java OOP Là Nền Tảng Quan Trọng Cho Sinh Viên CNTT</title>
+      <link>http://localhost:1313/posts/01-java-oop/</link>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/01-java-oop/</guid>
+      <description>Hiểu về OOP trong Java không chỉ là học cú pháp, mà là học cách tư duy như một kỹ sư phần mềm. Bài viết này chia sẻ cách mình đã học OOP từ những sai lầm ban đầu.</description>
+    </item>
+  </channel>
+</rss>

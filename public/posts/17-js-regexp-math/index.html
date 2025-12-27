@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RegExp và Math object là những công cụ mạnh mẽ trong JavaScript. Bài viết này chia sẻ cách sử dụng chúng hiệu quả, dựa trên Cisco JavaScript Essentials 2.">
+    <title>JavaScript RegExp &amp; Math Object: Xử Lý Text Và Tính Toán - Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link rel="stylesheet" href="/css/extended/premium.css">
+    <meta name="theme-color" content="#0b0f14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body style="background-color: #000000; color: #ffffff;">
+    <header class="navbar" id="navbar">
+    <nav class="nav-container">
+        <div class="nav-logo">
+            <a href="/">Thiên Dev</a>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Trang chủ</a></li>
+                <li><a href="/posts/" class="nav-link">Bài viết</a></li>
+                <li><a href="/about/" class="nav-link">Giới thiệu chung</a></li>
+                <li><a href="/certificates/" class="nav-link">Chứng chỉ</a></li>
+            </ul>
+            <label class="theme-toggle-switch" aria-label="Toggle theme">
+                <input type="checkbox" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-toggle-slider">
+                    <span class="theme-toggle-icon theme-toggle-icon-light">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                        </svg>
+                    </span>
+                    <span class="theme-toggle-icon theme-toggle-icon-dark">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </span>
+            </label>
+            <a href="/about/" class="btn-about-me"><span>Về tôi</span></a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+
+    
+    
+    <main class="post-container">
+        <article class="post-content">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time datetime="2025-01-01">01/01/2025</time>
+                    <span class="separator">•</span>
+                    <span class="reading-time">9 phút đọc</span>
+                </div>
+                <h1 class="post-title">JavaScript RegExp &amp; Math Object: Xử Lý Text Và Tính Toán</h1>
+                <div class="post-tags">
+                    
+                    <span class="tag tag-javascript">JavaScript</span>
+                    
+                    <span class="tag tag-regexp">RegExp</span>
+                    
+                    <span class="tag tag-math">Math</span>
+                    
+                    <span class="tag tag-string manipulation">String Manipulation</span>
+                    
+                    <span class="tag tag-advanced">Advanced</span>
+                    
+                </div>
+            </header>
+            
+            <div class="post-body">
+                <h2 id="regexp-pattern-matching-mạnh-mẽ">RegExp: Pattern Matching Mạnh Mẽ</h2>
+<p>Regular Expressions (RegExp) là một công cụ mạnh mẽ để tìm kiếm và thay thế patterns trong text. Mặc dù có vẻ phức tạp, nhưng một khi hiểu rõ, bạn sẽ thấy chúng rất hữu ích.</p>
+<h2 id="regexp-basics">RegExp Basics</h2>
+<h3 id="tạo-regexp">Tạo RegExp</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Cách 1: RegExp literal
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/hello/</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Cách 2: RegExp constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72">new</span> RegExp(<span style="color:#a5d6ff">&#34;hello&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Flags
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern1 <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/hello/i</span>; <span style="color:#8b949e;font-style:italic">// Case insensitive
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern2 <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/hello/g</span>; <span style="color:#8b949e;font-style:italic">// Global (tìm tất cả matches)
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern3 <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/hello/m</span>; <span style="color:#8b949e;font-style:italic">// Multiline
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern4 <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/hello/gi</span>; <span style="color:#8b949e;font-style:italic">// Multiple flags
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="basic-patterns">Basic Patterns</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Literal match
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/hello/</span>;
+</span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;hello world&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;Hello world&#34;</span>); <span style="color:#8b949e;font-style:italic">// false (case sensitive)
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Case insensitive
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/hello/i</span>;
+</span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;Hello world&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Character classes
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/[0-9]/</span>; <span style="color:#8b949e;font-style:italic">// Match any digit
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;abc123&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/[a-z]/</span>; <span style="color:#8b949e;font-style:italic">// Match any lowercase letter
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;ABC&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/[a-zA-Z0-9]/</span>; <span style="color:#8b949e;font-style:italic">// Match alphanumeric
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;Hello123&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Negated character class
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/[^0-9]/</span>; <span style="color:#8b949e;font-style:italic">// Match anything except digits
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;123&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;abc&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="common-patterns">Common Patterns</h2>
+<h3 id="digits-và-numbers">Digits và Numbers</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Match digits
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> digitPattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\d/</span>; <span style="color:#8b949e;font-style:italic">// Same as [0-9]
+</span></span></span><span style="display:flex;"><span>digitPattern.test(<span style="color:#a5d6ff">&#34;abc123&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Match non-digits
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> nonDigitPattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\D/</span>; <span style="color:#8b949e;font-style:italic">// Same as [^0-9]
+</span></span></span><span style="display:flex;"><span>nonDigitPattern.test(<span style="color:#a5d6ff">&#34;123&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Match word characters
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> wordPattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\w/</span>; <span style="color:#8b949e;font-style:italic">// [a-zA-Z0-9_]
+</span></span></span><span style="display:flex;"><span>wordPattern.test(<span style="color:#a5d6ff">&#34;hello_123&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Match whitespace
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> spacePattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\s/</span>; <span style="color:#8b949e;font-style:italic">// Space, tab, newline
+</span></span></span><span style="display:flex;"><span>spacePattern.test(<span style="color:#a5d6ff">&#34;hello world&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Match phone number
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> phonePattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\d{3}-\d{3}-\d{4}/</span>;
+</span></span><span style="display:flex;"><span>phonePattern.test(<span style="color:#a5d6ff">&#34;123-456-7890&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="quantifiers">Quantifiers</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ * - Zero or more
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/ab*/</span>; <span style="color:#8b949e;font-style:italic">// a followed by zero or more b
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;a&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;ab&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;abb&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ + - One or more
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/ab+/</span>; <span style="color:#8b949e;font-style:italic">// a followed by one or more b
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;a&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;ab&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;abb&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ ? - Zero or one
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/ab?/</span>; <span style="color:#8b949e;font-style:italic">// a followed by zero or one b
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;a&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;ab&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;abb&#34;</span>); <span style="color:#8b949e;font-style:italic">// true (matches &#34;ab&#34;)
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ {n} - Exactly n times
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\d{3}/</span>; <span style="color:#8b949e;font-style:italic">// Exactly 3 digits
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;123&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;12&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ {n,m} - Between n and m times
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\d{2,4}/</span>; <span style="color:#8b949e;font-style:italic">// 2 to 4 digits
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;12&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;1234&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;12345&#34;</span>); <span style="color:#8b949e;font-style:italic">// true (matches first 4)
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ {n,} - n or more times
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\d{3,}/</span>; <span style="color:#8b949e;font-style:italic">// 3 or more digits
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;123&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;12345&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="anchors">Anchors</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ ^ - Start of string
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/^hello/</span>;
+</span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;hello world&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;world hello&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ $ - End of string
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/world$/</span>;
+</span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;hello world&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;world hello&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ \b - Word boundary
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\bhello\b/</span>;
+</span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;hello world&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;helloworld&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="string-methods-với-regexp">String Methods với RegExp</h2>
+<h3 id="test--exec">test() &amp; exec()</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ test() - returns boolean
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\d+/</span>;
+</span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;abc123&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>pattern.test(<span style="color:#a5d6ff">&#34;abc&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ exec() - returns match details
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\d+/</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> result <span style="color:#ff7b72;font-weight:bold">=</span> pattern.exec(<span style="color:#a5d6ff">&#34;abc123def456&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// result[0] = &#34;123&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// result.index = 3
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// result.input = &#34;abc123def456&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="match">match()</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ match() - find matches
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Hello 123 World 456&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> matches <span style="color:#ff7b72;font-weight:bold">=</span> str.match(<span style="color:#79c0ff">/\d+/</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// [&#34;123&#34;] - chỉ match đầu tiên
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> allMatches <span style="color:#ff7b72;font-weight:bold">=</span> str.match(<span style="color:#79c0ff">/\d+/g</span>); <span style="color:#8b949e;font-style:italic">// Global flag
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// [&#34;123&#34;, &#34;456&#34;] - tất cả matches
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="replace">replace()</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ replace() - replace matches
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Hello World&#34;</span>;
+</span></span><span style="display:flex;"><span>str.replace(<span style="color:#a5d6ff">&#34;World&#34;</span>, <span style="color:#a5d6ff">&#34;JavaScript&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// &#34;Hello JavaScript&#34;
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Với RegExp
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Hello World World&#34;</span>;
+</span></span><span style="display:flex;"><span>str.replace(<span style="color:#79c0ff">/World/g</span>, <span style="color:#a5d6ff">&#34;JavaScript&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// &#34;Hello JavaScript JavaScript&#34;
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Replace với function
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Hello 123 World 456&#34;</span>;
+</span></span><span style="display:flex;"><span>str.replace(<span style="color:#79c0ff">/\d+/g</span>, (match) =&gt; parseInt(match) <span style="color:#ff7b72;font-weight:bold">*</span> <span style="color:#a5d6ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// &#34;Hello 246 World 912&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="search">search()</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ search() - find index of first match
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Hello World&#34;</span>;
+</span></span><span style="display:flex;"><span>str.search(<span style="color:#79c0ff">/World/</span>); <span style="color:#8b949e;font-style:italic">// 6
+</span></span></span><span style="display:flex;"><span>str.search(<span style="color:#79c0ff">/world/i</span>); <span style="color:#8b949e;font-style:italic">// 6 (case insensitive)
+</span></span></span><span style="display:flex;"><span>str.search(<span style="color:#79c0ff">/xyz/</span>); <span style="color:#8b949e;font-style:italic">// -1 (not found)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="split">split()</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ split() - split by pattern
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Hello,World,JavaScript&#34;</span>;
+</span></span><span style="display:flex;"><span>str.split(<span style="color:#a5d6ff">&#34;,&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// [&#34;Hello&#34;, &#34;World&#34;, &#34;JavaScript&#34;]
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Với RegExp
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Hello123World456JavaScript&#34;</span>;
+</span></span><span style="display:flex;"><span>str.split(<span style="color:#79c0ff">/\d+/</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// [&#34;Hello&#34;, &#34;World&#34;, &#34;JavaScript&#34;]
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="practical-examples">Practical Examples</h2>
+<h3 id="email-validation">Email Validation</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Email validation
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">function</span> isValidEmail(email) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> pattern.test(email);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>isValidEmail(<span style="color:#a5d6ff">&#34;john@example.com&#34;</span>); <span style="color:#8b949e;font-style:italic">// true
+</span></span></span><span style="display:flex;"><span>isValidEmail(<span style="color:#a5d6ff">&#34;invalid.email&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span><span style="display:flex;"><span>isValidEmail(<span style="color:#a5d6ff">&#34;test@&#34;</span>); <span style="color:#8b949e;font-style:italic">// false
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="phone-number-formatting">Phone Number Formatting</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Format phone number
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">function</span> formatPhone(phone) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">const</span> cleaned <span style="color:#ff7b72;font-weight:bold">=</span> phone.replace(<span style="color:#79c0ff">/\D/g</span>, <span style="color:#a5d6ff">&#34;&#34;</span>); <span style="color:#8b949e;font-style:italic">// Remove non-digits
+</span></span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">const</span> match <span style="color:#ff7b72;font-weight:bold">=</span> cleaned.match(<span style="color:#79c0ff">/^(\d{3})(\d{3})(\d{4})$/</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> (match) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> <span style="color:#a5d6ff">`</span><span style="color:#a5d6ff">${</span>match[<span style="color:#a5d6ff">1</span>]<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">-</span><span style="color:#a5d6ff">${</span>match[<span style="color:#a5d6ff">2</span>]<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">-</span><span style="color:#a5d6ff">${</span>match[<span style="color:#a5d6ff">3</span>]<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">`</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> phone;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>formatPhone(<span style="color:#a5d6ff">&#34;1234567890&#34;</span>); <span style="color:#8b949e;font-style:italic">// &#34;123-456-7890&#34;
+</span></span></span><span style="display:flex;"><span>formatPhone(<span style="color:#a5d6ff">&#34;(123) 456-7890&#34;</span>); <span style="color:#8b949e;font-style:italic">// &#34;123-456-7890&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="extract-data">Extract Data</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Extract data từ text
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> text <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Order #12345: Total $99.99, Date: 2024-12-31&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Extract order number
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> orderMatch <span style="color:#ff7b72;font-weight:bold">=</span> text.match(<span style="color:#79c0ff">/#(\d+)/</span>);
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> orderNumber <span style="color:#ff7b72;font-weight:bold">=</span> orderMatch <span style="color:#ff7b72;font-weight:bold">?</span> orderMatch[<span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">:</span> <span style="color:#79c0ff">null</span>; <span style="color:#8b949e;font-style:italic">// &#34;12345&#34;
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Extract price
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> priceMatch <span style="color:#ff7b72;font-weight:bold">=</span> text.match(<span style="color:#79c0ff">/\$(\d+\.\d+)/</span>);
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> price <span style="color:#ff7b72;font-weight:bold">=</span> priceMatch <span style="color:#ff7b72;font-weight:bold">?</span> parseFloat(priceMatch[<span style="color:#a5d6ff">1</span>]) <span style="color:#ff7b72;font-weight:bold">:</span> <span style="color:#79c0ff">null</span>; <span style="color:#8b949e;font-style:italic">// 99.99
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Extract date
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> dateMatch <span style="color:#ff7b72;font-weight:bold">=</span> text.match(<span style="color:#79c0ff">/(\d{4}-\d{2}-\d{2})/</span>);
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> date <span style="color:#ff7b72;font-weight:bold">=</span> dateMatch <span style="color:#ff7b72;font-weight:bold">?</span> dateMatch[<span style="color:#a5d6ff">1</span>] <span style="color:#ff7b72;font-weight:bold">:</span> <span style="color:#79c0ff">null</span>; <span style="color:#8b949e;font-style:italic">// &#34;2024-12-31&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="math-object">Math Object</h2>
+<h3 id="basic-math-operations">Basic Math Operations</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Constants
+</span></span></span><span style="display:flex;"><span>Math.PI; <span style="color:#8b949e;font-style:italic">// 3.141592653589793
+</span></span></span><span style="display:flex;"><span>Math.E; <span style="color:#8b949e;font-style:italic">// 2.718281828459045
+</span></span></span><span style="display:flex;"><span>Math.SQRT2; <span style="color:#8b949e;font-style:italic">// 1.4142135623730951
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Rounding
+</span></span></span><span style="display:flex;"><span>Math.round(<span style="color:#a5d6ff">4.7</span>); <span style="color:#8b949e;font-style:italic">// 5
+</span></span></span><span style="display:flex;"><span>Math.round(<span style="color:#a5d6ff">4.4</span>); <span style="color:#8b949e;font-style:italic">// 4
+</span></span></span><span style="display:flex;"><span>Math.floor(<span style="color:#a5d6ff">4.7</span>); <span style="color:#8b949e;font-style:italic">// 4 (round down)
+</span></span></span><span style="display:flex;"><span>Math.ceil(<span style="color:#a5d6ff">4.2</span>); <span style="color:#8b949e;font-style:italic">// 5 (round up)
+</span></span></span><span style="display:flex;"><span>Math.trunc(<span style="color:#a5d6ff">4.7</span>); <span style="color:#8b949e;font-style:italic">// 4 (remove decimal)
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Min/Max
+</span></span></span><span style="display:flex;"><span>Math.min(<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">2</span>, <span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">4</span>, <span style="color:#a5d6ff">5</span>); <span style="color:#8b949e;font-style:italic">// 1
+</span></span></span><span style="display:flex;"><span>Math.max(<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">2</span>, <span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">4</span>, <span style="color:#a5d6ff">5</span>); <span style="color:#8b949e;font-style:italic">// 5
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Với arrays
+</span></span></span><span style="display:flex;"><span>Math.min(...[<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">2</span>, <span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">4</span>, <span style="color:#a5d6ff">5</span>]); <span style="color:#8b949e;font-style:italic">// 1
+</span></span></span><span style="display:flex;"><span>Math.max(...[<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">2</span>, <span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">4</span>, <span style="color:#a5d6ff">5</span>]); <span style="color:#8b949e;font-style:italic">// 5
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="power-và-roots">Power và Roots</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Power
+</span></span></span><span style="display:flex;"><span>Math.pow(<span style="color:#a5d6ff">2</span>, <span style="color:#a5d6ff">3</span>); <span style="color:#8b949e;font-style:italic">// 8
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">2</span> <span style="color:#ff7b72;font-weight:bold">**</span> <span style="color:#a5d6ff">3</span>; <span style="color:#8b949e;font-style:italic">// 8 (ES6 exponentiation operator)
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Square root
+</span></span></span><span style="display:flex;"><span>Math.sqrt(<span style="color:#a5d6ff">16</span>); <span style="color:#8b949e;font-style:italic">// 4
+</span></span></span><span style="display:flex;"><span>Math.sqrt(<span style="color:#a5d6ff">2</span>); <span style="color:#8b949e;font-style:italic">// 1.4142135623730951
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Cube root
+</span></span></span><span style="display:flex;"><span>Math.cbrt(<span style="color:#a5d6ff">8</span>); <span style="color:#8b949e;font-style:italic">// 2
+</span></span></span><span style="display:flex;"><span>Math.cbrt(<span style="color:#a5d6ff">27</span>); <span style="color:#8b949e;font-style:italic">// 3
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="trigonometric-functions">Trigonometric Functions</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Trigonometric (angles in radians)
+</span></span></span><span style="display:flex;"><span>Math.sin(Math.PI <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">2</span>); <span style="color:#8b949e;font-style:italic">// 1
+</span></span></span><span style="display:flex;"><span>Math.cos(<span style="color:#a5d6ff">0</span>); <span style="color:#8b949e;font-style:italic">// 1
+</span></span></span><span style="display:flex;"><span>Math.tan(Math.PI <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">4</span>); <span style="color:#8b949e;font-style:italic">// ~1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Convert degrees to radians
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">function</span> toRadians(degrees) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> degrees <span style="color:#ff7b72;font-weight:bold">*</span> (Math.PI <span style="color:#ff7b72;font-weight:bold">/</span> <span style="color:#a5d6ff">180</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Math.sin(toRadians(<span style="color:#a5d6ff">90</span>)); <span style="color:#8b949e;font-style:italic">// 1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Inverse trigonometric
+</span></span></span><span style="display:flex;"><span>Math.asin(<span style="color:#a5d6ff">1</span>); <span style="color:#8b949e;font-style:italic">// π/2
+</span></span></span><span style="display:flex;"><span>Math.acos(<span style="color:#a5d6ff">1</span>); <span style="color:#8b949e;font-style:italic">// 0
+</span></span></span><span style="display:flex;"><span>Math.atan(<span style="color:#a5d6ff">1</span>); <span style="color:#8b949e;font-style:italic">// π/4
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="random-numbers">Random Numbers</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Random number between 0 and 1
+</span></span></span><span style="display:flex;"><span>Math.random(); <span style="color:#8b949e;font-style:italic">// 0.0 to 0.999...
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Random integer between min and max (inclusive)
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">function</span> randomInt(min, max) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> Math.floor(Math.random() <span style="color:#ff7b72;font-weight:bold">*</span> (max <span style="color:#ff7b72;font-weight:bold">-</span> min <span style="color:#ff7b72;font-weight:bold">+</span> <span style="color:#a5d6ff">1</span>)) <span style="color:#ff7b72;font-weight:bold">+</span> min;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>randomInt(<span style="color:#a5d6ff">1</span>, <span style="color:#a5d6ff">10</span>); <span style="color:#8b949e;font-style:italic">// Random number from 1 to 10
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Random element from array
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">function</span> randomElement(array) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> array[Math.floor(Math.random() <span style="color:#ff7b72;font-weight:bold">*</span> array.length)];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>randomElement([<span style="color:#a5d6ff">&#34;red&#34;</span>, <span style="color:#a5d6ff">&#34;green&#34;</span>, <span style="color:#a5d6ff">&#34;blue&#34;</span>]); <span style="color:#8b949e;font-style:italic">// Random color
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="absolute-value-và-sign">Absolute Value và Sign</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Absolute value
+</span></span></span><span style="display:flex;"><span>Math.abs(<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">5</span>); <span style="color:#8b949e;font-style:italic">// 5
+</span></span></span><span style="display:flex;"><span>Math.abs(<span style="color:#a5d6ff">5</span>); <span style="color:#8b949e;font-style:italic">// 5
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Sign
+</span></span></span><span style="display:flex;"><span>Math.sign(<span style="color:#ff7b72;font-weight:bold">-</span><span style="color:#a5d6ff">5</span>); <span style="color:#8b949e;font-style:italic">// -1
+</span></span></span><span style="display:flex;"><span>Math.sign(<span style="color:#a5d6ff">5</span>); <span style="color:#8b949e;font-style:italic">// 1
+</span></span></span><span style="display:flex;"><span>Math.sign(<span style="color:#a5d6ff">0</span>); <span style="color:#8b949e;font-style:italic">// 0
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="practical-examples-1">Practical Examples</h2>
+<h3 id="example-1-calculate-distance">Example 1: Calculate Distance</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Calculate distance between two points
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">function</span> calculateDistance(x1, y1, x2, y2) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">const</span> dx <span style="color:#ff7b72;font-weight:bold">=</span> x2 <span style="color:#ff7b72;font-weight:bold">-</span> x1;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">const</span> dy <span style="color:#ff7b72;font-weight:bold">=</span> y2 <span style="color:#ff7b72;font-weight:bold">-</span> y1;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> Math.sqrt(dx <span style="color:#ff7b72;font-weight:bold">*</span> dx <span style="color:#ff7b72;font-weight:bold">+</span> dy <span style="color:#ff7b72;font-weight:bold">*</span> dy);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>calculateDistance(<span style="color:#a5d6ff">0</span>, <span style="color:#a5d6ff">0</span>, <span style="color:#a5d6ff">3</span>, <span style="color:#a5d6ff">4</span>); <span style="color:#8b949e;font-style:italic">// 5
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="example-2-generate-random-password">Example 2: Generate Random Password</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Generate random password
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">function</span> generatePassword(length <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">12</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">const</span> chars <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">let</span> password <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">for</span> (<span style="color:#ff7b72">let</span> i <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">0</span>; i <span style="color:#ff7b72;font-weight:bold">&lt;</span> length; i<span style="color:#ff7b72;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>        password <span style="color:#ff7b72;font-weight:bold">+=</span> chars.charAt(Math.floor(Math.random() <span style="color:#ff7b72;font-weight:bold">*</span> chars.length));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> password;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>generatePassword(<span style="color:#a5d6ff">16</span>); <span style="color:#8b949e;font-style:italic">// Random 16-character password
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="example-3-format-currency">Example 3: Format Currency</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Format number as currency
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">function</span> formatCurrency(amount, currency <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;USD&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">return</span> <span style="color:#ff7b72">new</span> Intl.NumberFormat(<span style="color:#a5d6ff">&#34;en-US&#34;</span>, {
+</span></span><span style="display:flex;"><span>        style<span style="color:#ff7b72;font-weight:bold">:</span> <span style="color:#a5d6ff">&#34;currency&#34;</span>,
+</span></span><span style="display:flex;"><span>        currency<span style="color:#ff7b72;font-weight:bold">:</span> currency
+</span></span><span style="display:flex;"><span>    }).format(amount);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>formatCurrency(<span style="color:#a5d6ff">1234.56</span>); <span style="color:#8b949e;font-style:italic">// &#34;$1,234.56&#34;
+</span></span></span><span style="display:flex;"><span>formatCurrency(<span style="color:#a5d6ff">1234.56</span>, <span style="color:#a5d6ff">&#34;EUR&#34;</span>); <span style="color:#8b949e;font-style:italic">// &#34;€1,234.56&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="common-mistakes-tôi-đã-mắc">Common Mistakes Tôi Đã Mắc</h2>
+<h3 id="1-greedy-vs-lazy-quantifiers">1. Greedy vs Lazy Quantifiers</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ❌ Greedy - matches as much as possible
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;&lt;div&gt;Hello&lt;/div&gt;&lt;div&gt;World&lt;/div&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>str.match(<span style="color:#79c0ff">/&lt;div&gt;.*&lt;\/div&gt;/</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Matches entire string: &#34;&lt;div&gt;Hello&lt;/div&gt;&lt;div&gt;World&lt;/div&gt;&#34;
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Lazy - matches as little as possible
+</span></span></span><span style="display:flex;"><span>str.match(<span style="color:#79c0ff">/&lt;div&gt;.*?&lt;\/div&gt;/</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Matches first: &#34;&lt;div&gt;Hello&lt;/div&gt;&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-forgetting-global-flag">2. Forgetting Global Flag</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ❌ Chỉ replace đầu tiên
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> str <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;hello hello hello&#34;</span>;
+</span></span><span style="display:flex;"><span>str.replace(<span style="color:#79c0ff">/hello/</span>, <span style="color:#a5d6ff">&#34;hi&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// &#34;hi hello hello&#34;
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Replace tất cả
+</span></span></span><span style="display:flex;"><span>str.replace(<span style="color:#79c0ff">/hello/g</span>, <span style="color:#a5d6ff">&#34;hi&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// &#34;hi hi hi&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-not-escaping-special-characters">3. Not Escaping Special Characters</h3>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ❌ Special characters cần escape
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/./</span>; <span style="color:#8b949e;font-style:italic">// Matches any character, not literal dot!
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// ✅ Escape special characters
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\./</span>; <span style="color:#8b949e;font-style:italic">// Matches literal dot
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">const</span> pattern2 <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">/\$/</span>; <span style="color:#8b949e;font-style:italic">// Matches literal dollar sign
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="takeaway-cho-sinh-viên">Takeaway Cho Sinh Viên</h2>
+<ol>
+<li><strong>RegExp mạnh mẽ nhưng phức tạp</strong> - Practice với real examples</li>
+<li><strong>Math object cho calculations</strong> - Hiểu các methods cơ bản</li>
+<li><strong>Combine RegExp với string methods</strong> - Rất mạnh mẽ</li>
+<li><strong>Test patterns</strong> - Dùng online tools để test RegExp</li>
+<li><strong>Start simple</strong> - Bắt đầu với patterns đơn giản</li>
+</ol>
+<h2 id="kết-luận">Kết Luận</h2>
+<p>RegExp và Math object là những công cụ quan trọng trong JavaScript. Từ pattern matching đến mathematical calculations, hiểu rõ chúng sẽ giúp bạn xử lý text và tính toán hiệu quả hơn.</p>
+<p><strong>Thử thách:</strong> Hãy tạo một form validator sử dụng RegExp để validate email, phone, và password. Đây là cách tốt nhất để practice RegExp!</p>
+
+            </div>
+            
+            <footer class="post-footer">
+                <div class="post-navigation">
+                    
+                    <a href="http://localhost:1313/posts/16-js-advanced-arrays/" class="nav-link prev">
+                        <span class="nav-label">← Bài trước</span>
+                        <span class="nav-title">JavaScript Advanced Array Methods: Từ Basics Đến Mastery</span>
+                    </a>
+                    
+                    
+                    <a href="http://localhost:1313/posts/18-js-inheritance/" class="nav-link next">
+                        <span class="nav-label">Bài sau →</span>
+                        <span class="nav-title">JavaScript Inheritance: Từ Prototypes Đến ES6 Classes</span>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </main>
+    
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo-wrapper">
+                <img src="/img/logo-hutech.png" alt="HUTECH Logo" class="footer-logo">
+            </div>
+            <div class="footer-main">
+                <p class="footer-copyright">&copy; 2025 Thiên Dev. Built with Hugo.</p>
+                <div class="footer-social">
+                    
+                    <a href="https://github.com/ThunThin" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                    
+                    
+                    <a href="https://www.facebook.com/thieen.12?locale=vi_VN" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    
+                    
+                    <a href="https://www.instagram.com/_thieen.12/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

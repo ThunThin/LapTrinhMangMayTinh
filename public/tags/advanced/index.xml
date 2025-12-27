@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Advanced on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/advanced/</link>
+    <description>Recent content in Advanced on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 03 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/advanced/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Closures &amp; Scope: Hiểu Sâu Về Variable Scope</title>
+      <link>http://localhost:1313/posts/19-js-closures-scope/</link>
+      <pubDate>Fri, 03 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/19-js-closures-scope/</guid>
+      <description>Closures là một trong những khái niệm quan trọng nhất của JavaScript nhưng lại khó hiểu. Bài viết này giải thích chi tiết cách closures và scope hoạt động.</description>
+    </item>
+    <item>
+      <title>JavaScript RegExp &amp; Math Object: Xử Lý Text Và Tính Toán</title>
+      <link>http://localhost:1313/posts/17-js-regexp-math/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/17-js-regexp-math/</guid>
+      <description>RegExp và Math object là những công cụ mạnh mẽ trong JavaScript. Bài viết này chia sẻ cách sử dụng chúng hiệu quả, dựa trên Cisco JavaScript Essentials 2.</description>
+    </item>
+    <item>
+      <title>JavaScript Advanced Array Methods: Từ Basics Đến Mastery</title>
+      <link>http://localhost:1313/posts/16-js-advanced-arrays/</link>
+      <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/16-js-advanced-arrays/</guid>
+      <description>Array methods là một trong những tính năng mạnh mẽ nhất của JavaScript. Bài viết này đi sâu vào các advanced array methods từ Cisco JavaScript Essentials 2.</description>
+    </item>
+    <item>
+      <title>Java Multithreading: Hiểu Concurrency Và Parallelism</title>
+      <link>http://localhost:1313/posts/13-java-multithreading/</link>
+      <pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/13-java-multithreading/</guid>
+      <description>Multithreading là một trong những chủ đề khó nhất của Java. Bài viết này chia sẻ cách mình đã học từ basic threads đến ExecutorService và concurrent collections.</description>
+    </item>
+    <item>
+      <title>Java Generics: Type Safety Và Code Reusability</title>
+      <link>http://localhost:1313/posts/12-java-generics/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/12-java-generics/</guid>
+      <description>Generics là một trong những tính năng quan trọng nhất của Java nhưng lại khó hiểu. Bài viết này giải thích chi tiết cách Generics hoạt động và cách sử dụng đúng cách.</description>
+    </item>
+    <item>
+      <title>Java Streams API: Xử Lý Dữ Liệu Theo Cách Functional</title>
+      <link>http://localhost:1313/posts/11-java-streams-api/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/11-java-streams-api/</guid>
+      <description>Streams API là một trong những tính năng mạnh mẽ nhất của Java 8+. Bài viết này chia sẻ cách mình đã học Streams từ cách tiếp cận imperative đến functional programming style.</description>
+    </item>
+    <item>
+      <title>JavaScript Objects &amp; Prototypes: Hiểu Sâu Về Cơ Chế Hoạt Động</title>
+      <link>http://localhost:1313/posts/10-js-objects-prototypes/</link>
+      <pubDate>Wed, 25 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/10-js-objects-prototypes/</guid>
+      <description>Prototypes là một trong những khái niệm quan trọng nhất trong JavaScript nhưng lại khó hiểu nhất. Bài viết này giải thích chi tiết cách objects và prototypes hoạt động, dựa trên kiến thức từ Cisco JavaScript Essentials 2.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Basics on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/basics/</link>
+    <description>Recent content in Basics on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 20 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/basics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Fundamentals: Những Điều Sinh Viên Phải Nắm Vững</title>
+      <link>http://localhost:1313/posts/06-js-basics/</link>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/06-js-basics/</guid>
+      <description>JavaScript có nhiều điểm đặc biệt mà nếu không hiểu rõ sẽ gây confusion. Bài viết này chia sẻ những fundamentals quan trọng mà mình đã học từ những sai lầm ban đầu.</description>
+    </item>
+  </channel>
+</rss>

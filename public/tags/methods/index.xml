@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Methods on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/methods/</link>
+    <description>Recent content in Methods on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Tue, 31 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/methods/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Advanced Array Methods: Từ Basics Đến Mastery</title>
+      <link>http://localhost:1313/posts/16-js-advanced-arrays/</link>
+      <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/16-js-advanced-arrays/</guid>
+      <description>Array methods là một trong những tính năng mạnh mẽ nhất của JavaScript. Bài viết này đi sâu vào các advanced array methods từ Cisco JavaScript Essentials 2.</description>
+    </item>
+  </channel>
+</rss>

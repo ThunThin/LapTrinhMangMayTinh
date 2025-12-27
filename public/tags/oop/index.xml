@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OOP on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/oop/</link>
+    <description>Recent content in OOP on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Thu, 02 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/oop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Inheritance: Từ Prototypes Đến ES6 Classes</title>
+      <link>http://localhost:1313/posts/18-js-inheritance/</link>
+      <pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/18-js-inheritance/</guid>
+      <description>Inheritance là một trong những khái niệm quan trọng nhất của OOP. Bài viết này giải thích cách inheritance hoạt động trong JavaScript, từ prototypes đến ES6 classes.</description>
+    </item>
+    <item>
+      <title>Java Design Patterns: Giải Pháp Cho Các Vấn Đề Thường Gặp</title>
+      <link>http://localhost:1313/posts/15-java-design-patterns/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/15-java-design-patterns/</guid>
+      <description>Design patterns là các giải pháp đã được chứng minh cho các vấn đề thiết kế phần mềm thường gặp. Bài viết này giới thiệu các design patterns quan trọng nhất trong Java.</description>
+    </item>
+    <item>
+      <title>JavaScript Objects &amp; Prototypes: Hiểu Sâu Về Cơ Chế Hoạt Động</title>
+      <link>http://localhost:1313/posts/10-js-objects-prototypes/</link>
+      <pubDate>Wed, 25 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/10-js-objects-prototypes/</guid>
+      <description>Prototypes là một trong những khái niệm quan trọng nhất trong JavaScript nhưng lại khó hiểu nhất. Bài viết này giải thích chi tiết cách objects và prototypes hoạt động, dựa trên kiến thức từ Cisco JavaScript Essentials 2.</description>
+    </item>
+    <item>
+      <title>Tại Sao Java OOP Là Nền Tảng Quan Trọng Cho Sinh Viên CNTT</title>
+      <link>http://localhost:1313/posts/01-java-oop/</link>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/01-java-oop/</guid>
+      <description>Hiểu về OOP trong Java không chỉ là học cú pháp, mà là học cách tư duy như một kỹ sư phần mềm. Bài viết này chia sẻ cách mình đã học OOP từ những sai lầm ban đầu.</description>
+    </item>
+  </channel>
+</rss>

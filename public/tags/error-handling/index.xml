@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Error Handling on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/error-handling/</link>
+    <description>Recent content in Error Handling on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/error-handling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Error Handling: Từ Try-Catch Đến Best Practices</title>
+      <link>http://localhost:1313/posts/20-js-error-handling/</link>
+      <pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/20-js-error-handling/</guid>
+      <description>Error handling là một kỹ năng quan trọng nhưng thường bị bỏ qua. Bài viết này chia sẻ cách handle errors đúng cách trong JavaScript.</description>
+    </item>
+    <item>
+      <title>Java Exceptions: Từ Try-Catch Đến Best Practices</title>
+      <link>http://localhost:1313/posts/03-java-exceptions/</link>
+      <pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/03-java-exceptions/</guid>
+      <description>Exception handling là một trong những phần khó nhất khi học Java. Bài viết này chia sẻ cách mình đã học từ việc bỏ qua exceptions đến việc xử lý chúng một cách chuyên nghiệp.</description>
+    </item>
+  </channel>
+</rss>

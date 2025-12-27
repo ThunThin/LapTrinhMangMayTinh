@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Streams on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/streams/</link>
+    <description>Recent content in Streams on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Thu, 26 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/streams/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Streams API: Xử Lý Dữ Liệu Theo Cách Functional</title>
+      <link>http://localhost:1313/posts/11-java-streams-api/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/11-java-streams-api/</guid>
+      <description>Streams API là một trong những tính năng mạnh mẽ nhất của Java 8+. Bài viết này chia sẻ cách mình đã học Streams từ cách tiếp cận imperative đến functional programming style.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Objects on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/objects/</link>
+    <description>Recent content in Objects on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Wed, 25 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/objects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Objects &amp; Prototypes: Hiểu Sâu Về Cơ Chế Hoạt Động</title>
+      <link>http://localhost:1313/posts/10-js-objects-prototypes/</link>
+      <pubDate>Wed, 25 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/10-js-objects-prototypes/</guid>
+      <description>Prototypes là một trong những khái niệm quan trọng nhất trong JavaScript nhưng lại khó hiểu nhất. Bài viết này giải thích chi tiết cách objects và prototypes hoạt động, dựa trên kiến thức từ Cisco JavaScript Essentials 2.</description>
+    </item>
+  </channel>
+</rss>

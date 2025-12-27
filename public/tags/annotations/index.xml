@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Annotations on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/annotations/</link>
+    <description>Recent content in Annotations on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Sun, 29 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/annotations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Annotations: Metadata Và Reflection</title>
+      <link>http://localhost:1313/posts/14-java-annotations/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/14-java-annotations/</guid>
+      <description>Annotations là cách Java thêm metadata vào code. Bài viết này giải thích cách annotations hoạt động và cách tạo custom annotations.</description>
+    </item>
+  </channel>
+</rss>

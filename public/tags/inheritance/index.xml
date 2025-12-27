@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inheritance on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/inheritance/</link>
+    <description>Recent content in Inheritance on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Thu, 02 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/inheritance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Inheritance: Từ Prototypes Đến ES6 Classes</title>
+      <link>http://localhost:1313/posts/18-js-inheritance/</link>
+      <pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/18-js-inheritance/</guid>
+      <description>Inheritance là một trong những khái niệm quan trọng nhất của OOP. Bài viết này giải thích cách inheritance hoạt động trong JavaScript, từ prototypes đến ES6 classes.</description>
+    </item>
+  </channel>
+</rss>

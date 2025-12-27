@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Framework on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/framework/</link>
+    <description>Recent content in Framework on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Wed, 18 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/framework/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Từ Java Core Đến Spring: Thay Đổi Tư Duy Lập Trình</title>
+      <link>http://localhost:1313/posts/04-java-spring-mindset/</link>
+      <pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/04-java-spring-mindset/</guid>
+      <description>Học Spring không chỉ là học một framework, mà là học cách tư duy về kiến trúc phần mềm. Bài viết này chia sẻ hành trình từ Java thuần đến Spring Boot của mình.</description>
+    </item>
+  </channel>
+</rss>

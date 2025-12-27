@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design Patterns on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/design-patterns/</link>
+    <description>Recent content in Design Patterns on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/design-patterns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Design Patterns: Giải Pháp Cho Các Vấn Đề Thường Gặp</title>
+      <link>http://localhost:1313/posts/15-java-design-patterns/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/15-java-design-patterns/</guid>
+      <description>Design patterns là các giải pháp đã được chứng minh cho các vấn đề thiết kế phần mềm thường gặp. Bài viết này giới thiệu các design patterns quan trọng nhất trong Java.</description>
+    </item>
+  </channel>
+</rss>

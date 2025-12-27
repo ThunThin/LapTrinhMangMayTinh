@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Type Safety on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/type-safety/</link>
+    <description>Recent content in Type Safety on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 27 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/type-safety/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Generics: Type Safety Và Code Reusability</title>
+      <link>http://localhost:1313/posts/12-java-generics/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/12-java-generics/</guid>
+      <description>Generics là một trong những tính năng quan trọng nhất của Java nhưng lại khó hiểu. Bài viết này giải thích chi tiết cách Generics hoạt động và cách sử dụng đúng cách.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Best Practices on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/best-practices/</link>
+    <description>Recent content in Best Practices on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/best-practices/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Error Handling: Từ Try-Catch Đến Best Practices</title>
+      <link>http://localhost:1313/posts/20-js-error-handling/</link>
+      <pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/20-js-error-handling/</guid>
+      <description>Error handling là một kỹ năng quan trọng nhưng thường bị bỏ qua. Bài viết này chia sẻ cách handle errors đúng cách trong JavaScript.</description>
+    </item>
+    <item>
+      <title>Java Design Patterns: Giải Pháp Cho Các Vấn Đề Thường Gặp</title>
+      <link>http://localhost:1313/posts/15-java-design-patterns/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/15-java-design-patterns/</guid>
+      <description>Design patterns là các giải pháp đã được chứng minh cho các vấn đề thiết kế phần mềm thường gặp. Bài viết này giới thiệu các design patterns quan trọng nhất trong Java.</description>
+    </item>
+    <item>
+      <title>Java Generics: Type Safety Và Code Reusability</title>
+      <link>http://localhost:1313/posts/12-java-generics/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/12-java-generics/</guid>
+      <description>Generics là một trong những tính năng quan trọng nhất của Java nhưng lại khó hiểu. Bài viết này giải thích chi tiết cách Generics hoạt động và cách sử dụng đúng cách.</description>
+    </item>
+    <item>
+      <title>JavaScript Project Structure: Từ Chaos Đến Organization</title>
+      <link>http://localhost:1313/posts/09-js-project-structure/</link>
+      <pubDate>Mon, 23 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/09-js-project-structure/</guid>
+      <description>Tổ chức code là một kỹ năng quan trọng nhưng thường bị bỏ qua. Bài viết này chia sẻ cách mình đã học tổ chức JavaScript project từ một đống file hỗn độn đến structure chuyên nghiệp.</description>
+    </item>
+    <item>
+      <title>Clean Code trong Java: Từ Code &#34;Chạy Được&#34; Đến Code &#34;Đẹp&#34;</title>
+      <link>http://localhost:1313/posts/05-java-clean-code/</link>
+      <pubDate>Thu, 19 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/05-java-clean-code/</guid>
+      <description>Clean code không chỉ là code đẹp, mà là code dễ đọc, dễ hiểu, dễ maintain. Bài viết này chia sẻ những nguyên tắc clean code mà mình đã học và áp dụng.</description>
+    </item>
+    <item>
+      <title>Java Exceptions: Từ Try-Catch Đến Best Practices</title>
+      <link>http://localhost:1313/posts/03-java-exceptions/</link>
+      <pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/03-java-exceptions/</guid>
+      <description>Exception handling là một trong những phần khó nhất khi học Java. Bài viết này chia sẻ cách mình đã học từ việc bỏ qua exceptions đến việc xử lý chúng một cách chuyên nghiệp.</description>
+    </item>
+  </channel>
+</rss>

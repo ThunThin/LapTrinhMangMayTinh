@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fundamentals on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/fundamentals/</link>
+    <description>Recent content in Fundamentals on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 20 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/fundamentals/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Fundamentals: Những Điều Sinh Viên Phải Nắm Vững</title>
+      <link>http://localhost:1313/posts/06-js-basics/</link>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/06-js-basics/</guid>
+      <description>JavaScript có nhiều điểm đặc biệt mà nếu không hiểu rõ sẽ gây confusion. Bài viết này chia sẻ những fundamentals quan trọng mà mình đã học từ những sai lầm ban đầu.</description>
+    </item>
+    <item>
+      <title>Tại Sao Java OOP Là Nền Tảng Quan Trọng Cho Sinh Viên CNTT</title>
+      <link>http://localhost:1313/posts/01-java-oop/</link>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/01-java-oop/</guid>
+      <description>Hiểu về OOP trong Java không chỉ là học cú pháp, mà là học cách tư duy như một kỹ sư phần mềm. Bài viết này chia sẻ cách mình đã học OOP từ những sai lầm ban đầu.</description>
+    </item>
+  </channel>
+</rss>

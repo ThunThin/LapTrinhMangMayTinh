@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on Thiên Dev - Từ Sinh Viên Đến Developer</title>
+    <link>http://localhost:1313/tags/javascript/</link>
+    <description>Recent content in JavaScript on Thiên Dev - Từ Sinh Viên Đến Developer</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript Error Handling: Từ Try-Catch Đến Best Practices</title>
+      <link>http://localhost:1313/posts/20-js-error-handling/</link>
+      <pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/20-js-error-handling/</guid>
+      <description>Error handling là một kỹ năng quan trọng nhưng thường bị bỏ qua. Bài viết này chia sẻ cách handle errors đúng cách trong JavaScript.</description>
+    </item>
+    <item>
+      <title>JavaScript Closures &amp; Scope: Hiểu Sâu Về Variable Scope</title>
+      <link>http://localhost:1313/posts/19-js-closures-scope/</link>
+      <pubDate>Fri, 03 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/19-js-closures-scope/</guid>
+      <description>Closures là một trong những khái niệm quan trọng nhất của JavaScript nhưng lại khó hiểu. Bài viết này giải thích chi tiết cách closures và scope hoạt động.</description>
+    </item>
+    <item>
+      <title>JavaScript Inheritance: Từ Prototypes Đến ES6 Classes</title>
+      <link>http://localhost:1313/posts/18-js-inheritance/</link>
+      <pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/18-js-inheritance/</guid>
+      <description>Inheritance là một trong những khái niệm quan trọng nhất của OOP. Bài viết này giải thích cách inheritance hoạt động trong JavaScript, từ prototypes đến ES6 classes.</description>
+    </item>
+    <item>
+      <title>JavaScript RegExp &amp; Math Object: Xử Lý Text Và Tính Toán</title>
+      <link>http://localhost:1313/posts/17-js-regexp-math/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/17-js-regexp-math/</guid>
+      <description>RegExp và Math object là những công cụ mạnh mẽ trong JavaScript. Bài viết này chia sẻ cách sử dụng chúng hiệu quả, dựa trên Cisco JavaScript Essentials 2.</description>
+    </item>
+    <item>
+      <title>JavaScript Advanced Array Methods: Từ Basics Đến Mastery</title>
+      <link>http://localhost:1313/posts/16-js-advanced-arrays/</link>
+      <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/16-js-advanced-arrays/</guid>
+      <description>Array methods là một trong những tính năng mạnh mẽ nhất của JavaScript. Bài viết này đi sâu vào các advanced array methods từ Cisco JavaScript Essentials 2.</description>
+    </item>
+    <item>
+      <title>JavaScript Objects &amp; Prototypes: Hiểu Sâu Về Cơ Chế Hoạt Động</title>
+      <link>http://localhost:1313/posts/10-js-objects-prototypes/</link>
+      <pubDate>Wed, 25 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/10-js-objects-prototypes/</guid>
+      <description>Prototypes là một trong những khái niệm quan trọng nhất trong JavaScript nhưng lại khó hiểu nhất. Bài viết này giải thích chi tiết cách objects và prototypes hoạt động, dựa trên kiến thức từ Cisco JavaScript Essentials 2.</description>
+    </item>
+    <item>
+      <title>JavaScript Project Structure: Từ Chaos Đến Organization</title>
+      <link>http://localhost:1313/posts/09-js-project-structure/</link>
+      <pubDate>Mon, 23 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/09-js-project-structure/</guid>
+      <description>Tổ chức code là một kỹ năng quan trọng nhưng thường bị bỏ qua. Bài viết này chia sẻ cách mình đã học tổ chức JavaScript project từ một đống file hỗn độn đến structure chuyên nghiệp.</description>
+    </item>
+    <item>
+      <title>JavaScript Async: Từ Callback Hell Đến async/await</title>
+      <link>http://localhost:1313/posts/08-js-async/</link>
+      <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/08-js-async/</guid>
+      <description>Asynchronous programming là một trong những phần khó nhất của JavaScript. Bài viết này chia sẻ hành trình từ callback hell đến Promises và async/await của mình.</description>
+    </item>
+    <item>
+      <title>JavaScript DOM: Từ Manipulation Đến Modern Practices</title>
+      <link>http://localhost:1313/posts/07-js-dom/</link>
+      <pubDate>Sat, 21 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/07-js-dom/</guid>
+      <description>DOM manipulation là một trong những kỹ năng cơ bản nhất của frontend developer. Bài viết này chia sẻ cách mình đã học từ jQuery đến vanilla JavaScript và modern practices.</description>
+    </item>
+    <item>
+      <title>JavaScript Fundamentals: Những Điều Sinh Viên Phải Nắm Vững</title>
+      <link>http://localhost:1313/posts/06-js-basics/</link>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/06-js-basics/</guid>
+      <description>JavaScript có nhiều điểm đặc biệt mà nếu không hiểu rõ sẽ gây confusion. Bài viết này chia sẻ những fundamentals quan trọng mà mình đã học từ những sai lầm ban đầu.</description>
+    </item>
+  </channel>
+</rss>
